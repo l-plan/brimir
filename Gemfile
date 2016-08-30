@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '~> 4.2.0'
 
@@ -36,9 +37,9 @@ group :test do
 end
 
 # Optional PostgreSQL for production
-gem 'pg', group: :postgresql
+# gem 'pg', group: :postgresql
 # Optional MySQL for production
-gem 'mysql2', group: :mysql
+gem 'mysql2'#, group: :mysql
 # Optional SQLite for development
 gem 'sqlite3', group: :sqlite
 
