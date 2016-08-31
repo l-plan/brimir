@@ -186,6 +186,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    passenger (5.0.26)
+      rack
+      rake (>= 0.8.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -300,6 +303,7 @@ DEPENDENCIES
   mysql2
   omniauth-google-oauth2
   paperclip
+  passenger (= 5.0.26)
   pry
   rails (~> 4.2.0)
   rails-i18n
