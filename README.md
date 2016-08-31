@@ -3,6 +3,24 @@ Brimir [![Build Status](https://travis-ci.org/ivaldi/brimir.png)](https://travis
 [Brimir](http://getbrimir.com/) is a simple helpdesk system that can be used to handle support requests
 via incoming email. Brimir is currently used in production at [Ivaldi](http://ivaldi.nl/).
 
+L-PlanSupport
+-------------
+
+Added to brimir:
+
+####initial
+* add mysql2, commented-out sqlite
+* my database-config
+* my secrets-file
+
+####application-name
+* read application-name from app-settings file
+
+####mailer
+* default from is support.l-plan.nl
+* default host is l-plan.nl
+(added to production.rb)
+
 Installation
 ------------
 Brimir is a rather simple Ruby on Rails application. The only difficulty in setting things up is how to get incoming email to work. See the next section for details.

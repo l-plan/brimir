@@ -77,4 +77,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ####my settings
+
+  config.action_mailer.default_options = { from: 'support@l-plan.nl' }
+
+  config.action_mailer.default_url_options = { host: 'l-plan.nl' }
 end
