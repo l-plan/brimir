@@ -85,3 +85,13 @@ gem 'fancybox2-rails', '~> 0.2.8'
 
 # gravatar for user avatar images
 gem 'gravatar_image_tag'
+
+
+#add capistrano to brimir
+group :development do
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rvm'#
+  gem 'capistrano-bundler'#, require: false
+  gem 'capistrano-rails'#, require: false
+  gem 'capistrano-passenger'#, require: false
+end

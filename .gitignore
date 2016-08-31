@@ -26,10 +26,10 @@ public/system
 data
 
 # Capistrano deploy details
-config/deploy
-config/deploy.rb
-Capfile
-.capistrano
+#config/deploy
+#config/deploy.rb
+#Capfile
+#.capistrano
 
 # rcov files
 coverage
