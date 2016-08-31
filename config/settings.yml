@@ -2,7 +2,7 @@ default: &defaults
   display_user_avatars: true
   default_user_avatar: 'mm'
   user_avatar_api_url: ''
-  brimir_application_name: 'L-PlanSupport'
+  brimir_application_name: 'Support'
 
 development:
   <<: *defaults
