@@ -65,6 +65,16 @@
           <% end %>
 
         <% end %>
+        <h5>Gravatar</h5>
+
+        <%= user_avatar @user, size: 100, class: 'avatar mrm'%>
+        <% unless @user.new_record? || @user.has_gravatar? %>
+        
+        <%=link_to "create your avatar", "http://en.gravatar.com"%>
+
+         
+        <% end %>
+
 
       </div>
     </div>

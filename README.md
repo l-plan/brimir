@@ -21,6 +21,10 @@ Added to brimir:
 * default host is l-plan.nl
 (added to production.rb)
 
+####user
+* added method has_gravatar?
+* add link to gravatar.com 
+
 Installation
 ------------
 Brimir is a rather simple Ruby on Rails application. The only difficulty in setting things up is how to get incoming email to work. See the next section for details.
