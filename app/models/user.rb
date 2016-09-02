@@ -109,4 +109,17 @@ class User < ActiveRecord::Base
       self.password = Devise.friendly_token.first(12)
     end
   end
+
+  def has_gravatar?
+    return false if email.blank?
+    md5 = Digest::MD5.hexdigest(email.downcase)
+    check = "http://gravatar.com/avatar/#{md5}?d=404"
+    
+    uri = URI.parse(check)
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    response.code.to_i != 404
+  end
+
 end
