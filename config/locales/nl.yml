@@ -259,7 +259,7 @@ nl:
           open: Open
           closed: Gesloten
           deleted: Verwijderd
-          waiting: Afwachtend
+          waiting: In behandeling
         priority: Prioriteit
         assignee_id: Toegewezen aan
         created_at: Aangemaakt op
