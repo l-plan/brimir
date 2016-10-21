@@ -63,7 +63,21 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :sendmail
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              Rails.application.secrets.mailer["mailgun_hostname"],
+    port:                 587,
+    domain:               Rails.application.secrets.mailer["domain_name"],
+    user_name:            Rails.application.secrets.mailer["mailgun_user"],
+    password:             Rails.application.secrets.mailer["mailgun_password"],
+    authentication:       'login',
+    enable_starttls_auto: true  }
+
+
+  config.action_mailer.perform_deliveries = true
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -80,7 +94,7 @@ Rails.application.configure do
 
   ####my settings
 
-  config.action_mailer.default_options = { from: 'support@l-plan.nl' }
+  # config.action_mailer.default_options = { from: 'support@l-plan.nl' }
 
-  config.action_mailer.default_url_options = { host: 'l-plan.nl' }
+  # config.action_mailer.default_url_options = { host: 'l-plan.nl' }
 end
