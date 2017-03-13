@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise Rails.application.config.devise_authentication_strategy, :recoverable,
     :rememberable, :trackable, :validatable,:omniauthable,
     omniauth_providers: [:google_oauth2]
@@ -27,11 +27,17 @@ class User < ActiveRecord::Base
       foreign_key: 'assignee_id', dependent: :nullify
   has_many :notifications, dependent: :destroy
 
+  belongs_to :schedule
+
   # identities for omniauth
   has_many :identities
 
+  has_and_belongs_to_many :unread_tickets, class_name: 'Ticket'
+
   after_initialize :default_localization
   before_validation :generate_password
+
+  accepts_nested_attributes_for :schedule
 
   # All ldap users are agents by default, remove/comment this method if this
   # is not the intended behavior.
@@ -65,6 +71,13 @@ class User < ActiveRecord::Base
 
   def name
     super || name_from_email_address
+  end
+
+  def is_working?
+    #sanity checks for default behaviour
+    return true unless schedule_enabled # this is the default behaviour
+    return true if schedule.nil? # this is the default behaviour
+    schedule.is_during_work?(Time.now.in_time_zone(self.time_zone))
   end
 
   def name_from_email_address
