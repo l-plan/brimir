@@ -53,7 +53,8 @@ end
 # gem 'pg', "~> 0.19", group: :postgresql
 # Optional MySQL for production
 # gem 'mysql2', "~> 0.4", group: :mysql
-gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'mysql2'#, '>= 0.3.18', '< 0.5'
+
 # Optional SQLite for development
 # gem 'sqlite3', "~> 1.3", group: :sqlite
 

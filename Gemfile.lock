@@ -165,7 +165,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
+    mysql2 (0.4.6)
     net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -327,7 +327,7 @@ DEPENDENCIES
   jquery-rails (~> 4.2)
   letter_opener (~> 1.4)
   mail
-  mysql2 (>= 0.3.18, < 0.5)
+  mysql2
   omniauth-google-oauth2 (~> 0.4)
   paperclip (~> 5.1)
   passenger (= 5.1.4)
