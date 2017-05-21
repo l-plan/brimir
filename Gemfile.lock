@@ -327,7 +327,7 @@ DEPENDENCIES
   jquery-rails (~> 4.2)
   letter_opener (~> 1.4)
   mail
-  mysql2 (~> 0.4)
+  mysql2 (>= 0.3.18, < 0.5)
   omniauth-google-oauth2 (~> 0.4)
   paperclip (~> 5.1)
   passenger (= 5.1.4)
