@@ -100,13 +100,13 @@ gem 'fancybox2-rails', "~> 0.2"
 
 #add capistrano to brimir
 group :development do
-  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano', '~> 3.8.1'
   gem 'capistrano-rvm'#
   gem 'capistrano-bundler'#, require: false
   gem 'capistrano-rails'#, require: false
   gem 'capistrano-passenger'#, require: false
 end
-gem 'passenger', '5.0.26'
+gem 'passenger', '5.1.4'
 
 gem 'gravatar_image_tag', "~> 1.2"
 
