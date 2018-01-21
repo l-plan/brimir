@@ -2,18 +2,28 @@
 lock '3.8.2'
 # set :application, 'brimir'
 set :repo_url, 'git@github.com:l-plan/brimir.git'
+set :application, "brimir"
+set :rails_env, "production"
 
+set :default_environment, { 
+  # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
+  # 'RUBY_VERSION' => 'ruby 1.8.7',
+  # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
+  # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
+   "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
+   "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
+}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/users/rolf/sites/brimir"
+# set :deploy_to, "/users/rolf/sites/brimir"
 
 # set :ssh_options, { :forward_agent => true, :paranoid => false}
 set :format, :pretty
 # set :ssh_options, { :forward_agent => true}
 set :rvm_ruby_version, '2.4.1' #option provided by capistrano-rvm
-set :rails_env, "production"
+
 # set :rvm_ruby_string, 'ruby-2.2.0@global'
 # set :rvm_ruby_string, 'local'
 # set :bundle_cmd, "/Users/rolf/.rvm/gems/ruby-2.2.0@global/bin/bundle"
