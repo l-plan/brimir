@@ -1,6 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.8.2'
-
+env :PATH, ENV['PATH'] 
 set :application, 'brimir'
 set :repo_url, 'git@github.com:l-plan/brimir.git'
 

@@ -20,11 +20,12 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/rails
 #   https://github.com/capistrano/passenger
 #
+require 'capistrano/bundler' 
 require 'capistrano/rails'
 require 'capistrano/rvm'
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
-require 'capistrano/bundler' 
+
 require 'capistrano/rails/assets' 
 require 'capistrano/rails/migrations'#genereert fout
 require 'capistrano/passenger'
