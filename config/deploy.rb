@@ -13,7 +13,7 @@ set :deploy_to, "/users/rolf/sites/brimir"
 # set :ssh_options, { :forward_agent => true, :paranoid => false}
 set :format, :pretty
 # set :ssh_options, { :forward_agent => true}
-set :rvm_ruby_version, '2.3.0' #option provided by capistrano-rvm
+set :rvm_ruby_version, '2.4.1' #option provided by capistrano-rvm
 set :rails_env, "production"
 # set :rvm_ruby_string, 'ruby-2.2.0@global'
 # set :rvm_ruby_string, 'local'
