@@ -45,6 +45,14 @@ class User < ApplicationRecord
     self.agent = true
   end
 
+  scope :actives, -> {
+    where(active: true)
+  }
+
+  scope :inactives, -> {
+    where(active: false)
+  }
+
   scope :agents, -> {
     where(agent: true)
   }
@@ -84,9 +92,10 @@ class User < ApplicationRecord
     email.split('@').first
   end
 
+  # notify only active agents
   def self.agents_to_notify
     User.agents
-        .where(notify: true)
+        .where(notify: true).actives
   end
 
   # Does the email address of this user belong to the ticket system
@@ -123,6 +132,7 @@ class User < ApplicationRecord
     end
   end
 
+
   def has_gravatar?
     return false if email.blank?
     md5 = Digest::MD5.hexdigest(email.downcase)
@@ -133,6 +143,11 @@ class User < ApplicationRecord
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     response.code.to_i != 404
+  end
+
+
+  def active_for_authentication?
+      super and self.active
   end
 
 end

@@ -14,6 +14,7 @@ en:
   close: Close
   wait: Wait
   to: To
+  inactive: Inactive
 
   joyride:
     tickets: Anybody can create tickets using this button.
@@ -99,6 +100,10 @@ en:
   change_assignee: Assign ticket
   assign: Assign
 
+# tickets/_change_subject_form
+  change_subject: Rename ticket
+  str1_has_renamed_ticket_from_str2_to_str3: "%{str1} has renamed the ticket from '%{str2}' to '%{str3}'."
+
 # tickets/locks/create
   ticket_locked_by_somebody_else: Ticket is currently already being handled by somebody else
 
@@ -108,6 +113,12 @@ en:
   merge_explanation: "Merge the selected tickets. This copies all replies to the oldest of the selected tickets and closes the other selected tickets."
   tickets_have_been_merged: "Tickets have been merged."
 
+# email_imports/new
+  import_emails: Import emails
+  upload_eml_files_to_import_them_as_new_tickets: "Upload eml files here in order to import them as new tickets."
+  upload_files: Upload files
+  perform_email_import: Perform email import
+
 # replies/new
   add_reply: Add reply
 
@@ -116,6 +127,7 @@ en:
   attach_files: Attach file(s)
   attach_file: Attach file
   send_reply: Send reply
+  attach_note: Attach note
   on_date_author_wrote: 'On %{date}, %{author} wrote:'
   notification_will_be_sent_to: Your notification will be sent to
   save_as_draft: Save as draft
@@ -169,6 +181,7 @@ en:
   account_settings: Account Settings
   only_fill_in_passwords_when_modifying: Only fill in these two fields if you want to modify your password.
   user_is_an_agent: User is an agent
+  active: Is active
   receive_new_ticket_notifications: Receive notifications for new tickets
   email_settings: Email Settings
   save: Save
@@ -396,3 +409,4 @@ en:
         notify_client_when_ticket_is_created: Notify the client when his newly created ticket is received.
         notify_user_when_account_is_created: Notify user when account is created.
         stylesheet_url: Add the path to your own custom stylesheet.
+        ticket_creation_is_open_to_the_world: Tickets creation is open to everybody. 

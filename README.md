@@ -33,6 +33,8 @@ Any Rails application needs a web server with Ruby support first. We use Phusion
 
 After setting up a webserver, you have to create a database for Brimir and modify the config file in `config/database.yml` to reflect the details. Set your details under the production section. We advise to use `adapter: postgresql` or `adapter: mysql2` for production usage, because those are the only two adapters and database servers we test. *If you plan to use MySQL, make sure you use utf8 as your charset and collation.*
 
+Your server will need a JavaScript runtime supported by [execjs](https://github.com/rails/execjs). We recommend [Node.js](https://nodejs.org/). The Node.js packages shipped by your distribution should be sufficient for this application.  Install via `apt-get install nodejs` on Debian/Ubuntu or `yum install nodejs` on RHEL/CentOS.
+
 Next up: configuring your outgoing email address and url. This can be set in `config/environments/production.rb` by adding the following lines *before* the keyword `end`:
 
     config.action_mailer.default_options = { from: 'brimir@yoururl.com' }
@@ -64,7 +66,7 @@ If you want to use LDAP, configure config/ldap.yml accordingly, then change the 
 (Optional for LDAP) Last thing left to do before logging in is making a user and adding some statuses. You can do this by running:
 
     bin/rails console production
-    u = User.new({ email: 'your@email.address', password: 'somepassword', password_confirmation: 'somepassword' }); u.agent = true; u.save!
+    u = User.new({ email: 'your@email.address', password: 'somepassword' }); u.agent = true; u.save!
 
 Configuring Captcha's
 ---------------------
@@ -117,7 +119,6 @@ Some users have made requests for the following features. If you would like to c
 - Ability to sign in using a Single Sign On functionality based on Shared Token or JWT.
 - Private note addition to tickets.
 - Automated replies based on the current rule system.
-- Remove user functionality, without losing ticket and reply information.
 - Adding knowledge base functionality.
 - Set labels on the create ticket form.
 - Assign tickets to groups of users

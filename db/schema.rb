@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220094929) do
+ActiveRecord::Schema.define(version: 20171016140901) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "attachable_id"
@@ -209,10 +209,11 @@ ActiveRecord::Schema.define(version: 20170220094929) do
     t.boolean  "include_quote_in_reply",               default: true,  null: false
     t.string   "name"
     t.integer  "schedule_id"
-    t.boolean  "schedule_enabled",                     default: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["schedule_id"], name: "index_users_on_schedule_id", using: :btree
+    t.boolean  "schedule_enabled",       default: false
+    t.boolean  "active",                 default: true,  null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["schedule_id"], name: "index_users_on_schedule_id"
   end
 
   add_foreign_key "identities", "users"

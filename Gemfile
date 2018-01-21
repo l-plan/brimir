@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.4.1'
 
 gem 'rails', '~> 5.0.1'
 
@@ -12,6 +12,7 @@ gem 'compass-rails', '~> 3.0.0'
 gem 'foundation-rails', '~> 5.5.0'
 
 gem 'jquery-rails', "~> 4.2"
+gem 'jquery-visibility-rails'
 
 # foundation form errors
 gem 'foundation_rails_helper', "~> 2.0"
@@ -120,4 +121,6 @@ gem 'trix', "~> 0.10", ">= 0.10.1"
 
 # React support
 gem 'react-rails', "~> 1.10"
+
+
 

@@ -28,10 +28,12 @@ class TicketsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create, if: 'request.format.json?'
 
   def show
+    @users = User.actives
+    
     # first time seeing this ticket?
     @ticket.mark_read current_user if @ticket.is_unread? current_user
 
-    @agents = User.agents
+    @agents = User.agents.actives
 
     draft = @ticket.replies
         .where('user_id IS NULL OR user_id = ?', current_user.id)
@@ -70,7 +72,7 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @agents = User.agents
+    @agents = User.agents.actives
 
     params[:status] ||= 'open' unless params[:user_id]
 
@@ -115,6 +117,13 @@ class TicketsController < ApplicationController
 
         end
 
+        # change ticket subject
+        if @ticket.previous_changes.include? :subject
+          old_subject = @ticket.previous_changes[:subject].first
+          new_subject = @ticket.previous_changes[:subject].last
+          StatusReply.create_from_subject_change(@ticket, old_subject, new_subject, current_user)
+        end
+
         # status replies
         if @tenant.notify_client_when_ticket_is_assigned_or_closed
           if !@ticket.assignee.nil?
@@ -147,6 +156,8 @@ class TicketsController < ApplicationController
   end
 
   def new
+    @agents = User.agents.actives
+
     if !@tenant.ticket_creation_is_open_to_the_world? &&
           current_user.nil?
       render status: :forbidden, text: t(:access_denied)
@@ -166,14 +177,6 @@ class TicketsController < ApplicationController
       base64_message = ((params[:base64] == true) || !(params[:message][0,64] =~ /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/).nil?)
       message = base64_message ? Base64.decode64(params[:message].strip) : params[:message]
       @ticket = TicketMailer.receive(message)
-      if @tenant.notify_client_when_ticket_is_created
-        # we should always have a (default) template when option is selected
-        template = EmailTemplate.by_kind('ticket_received').active.first
-        unless template.nil?
-          @reply = SystemReply.create_from_assignment(@ticket, template)
-          @reply.try(:notification_mails).try(:each, &:deliver_now)
-        end
-      end
     else
       using_hook = false
       @ticket = Ticket.new(ticket_params)
@@ -185,6 +188,10 @@ class TicketsController < ApplicationController
     elsif can_create_a_ticket(using_hook) &&
         (@ticket.is_a?(Reply) || @ticket.save_with_label(params[:label]))
       notify_incoming @ticket
+
+      if @ticket.is_a?(Ticket)
+        send_system_replies_when_needed
+      end
 
       respond_to do |format|
         format.json { render json: @ticket, status: :created }
@@ -201,6 +208,7 @@ class TicketsController < ApplicationController
       respond_to do |format|
         format.html {
           @email_addresses = EmailAddress.verified.ordered
+          @agents = User.agents.actives
           render 'new'
         }
         format.json {
@@ -243,5 +251,16 @@ class TicketsController < ApplicationController
 
   def notify_incoming(ticket)
     NotificationMailer.incoming_message ticket, params[:message]
+  end
+
+  def send_system_replies_when_needed
+    if @tenant.notify_client_when_ticket_is_created
+      # we should always have a (default) template when option is selected
+      template = EmailTemplate.by_kind('ticket_received').active.first
+      unless template.nil?
+        @reply = SystemReply.create_from_assignment(@ticket, template)
+        @reply.try(:notification_mails).try(:each, &:deliver_now)
+      end
+    end
   end
 end
