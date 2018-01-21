@@ -203,7 +203,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    passenger (5.1.4)
+    passenger (5.1.12)
       rack
       rake (>= 0.8.1)
     pry (0.11.3)
@@ -335,7 +335,7 @@ DEPENDENCIES
   mysql2
   omniauth-google-oauth2 (~> 0.4)
   paperclip (~> 5.1)
-  passenger (= 5.1.4)
+  passenger (= 5.1.12)
   pry (~> 0.10)
   rails (~> 5.0.1)
   rails-controller-testing
