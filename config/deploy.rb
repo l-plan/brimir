@@ -1,5 +1,16 @@
 # config valid only for current version of Capistrano
 lock '3.8.2'
+
+
+# default_run_options[:shell] = '/bin/bash --login'
+
+
+#   set :default_environment, {
+#       'PATH' => "/usr/local/bin/passenger/:$PATH"
+#     }
+
+
+
 # set :application, 'brimir'
 set :repo_url, 'git@github.com:l-plan/brimir.git'
 set :application, "brimir"
@@ -11,9 +22,12 @@ set :default_environment, {
   # 'RUBY_VERSION' => 'ruby 1.8.7',
   # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
   # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
+  # 'PATH' => "/usr/local/bin",
    "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
    "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
 }
+
+# set :rvm_binary, '~/.rvm/bin/rvm'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -33,9 +47,14 @@ set :rvm_ruby_version, '2.4.1' #option provided by capistrano-rvm
 ask(:password, nil, echo: false)
 
 # set :passenger_rvm_ruby_version, '2.3.0'
-# set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
+set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
 set :passenger_in_gemfile, true
+set :passenger_rvm_ruby_version, '2.4.1'
 
+# set :bundle_path,     nil
+# set :bundle_binstubs, nil
+# set :bundle_flags,    '--system'
+# set :passenger_environment_variables, { :path => '/usr/local/cellar/passenger/5.1.4/bin:$PATH' }
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -51,11 +70,11 @@ set :log_level, :debug
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :bundle_path, nil
+# set :bundle_path, nil
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-# set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','vendor/bundle','public/system', 'data')
-set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','public/system', 'data')
+set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','vendor/bundle','public/system', 'data')
+# set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','public/system', 'data')
 
 
 
