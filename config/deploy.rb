@@ -4,6 +4,7 @@ lock '3.8.2'
 set :repo_url, 'git@github.com:l-plan/brimir.git'
 set :application, "brimir"
 set :rails_env, "production"
+set :default_stage, "production"
 
 set :default_environment, { 
   # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
@@ -50,10 +51,10 @@ set :log_level, :debug
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-
+set :bundle_path, nil
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','vendor/bundle','public/system', 'data')
+# set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','vendor/bundle','public/system', 'data')
 set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp/sockets','public/system', 'data')
 
 
