@@ -17,15 +17,15 @@ set :application, "brimir"
 set :rails_env, "production"
 set :default_stage, "production"
 
-set :default_environment, { 
-  # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
-  # 'RUBY_VERSION' => 'ruby 1.8.7',
-  # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
-  # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
-  # 'PATH' => "/usr/local/bin",
-   "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
-   "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
-}
+# set :default_environment, { 
+#   # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
+#   # 'RUBY_VERSION' => 'ruby 1.8.7',
+#   # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
+#   # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
+#   # 'PATH' => "/usr/local/bin",
+#    "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
+#    "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
+# }
 
 # set :rvm_binary, '~/.rvm/bin/rvm'
 # Default branch is :master
@@ -47,7 +47,7 @@ set :rvm_ruby_version, '2.4.1' #option provided by capistrano-rvm
 ask(:password, nil, echo: false)
 
 # set :passenger_rvm_ruby_version, '2.3.0'
-set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
+# set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
 set :passenger_in_gemfile, true
 set :passenger_rvm_ruby_version, '2.4.1'
 
@@ -88,21 +88,21 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log','tmp/pids','tmp/cache','tmp
 
 # set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-namespace :deploy do
+# namespace :deploy do
 
-  # after :restart, :clear_cache do
-  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
-  #     # Here we can do anything such as:
-  #     # within release_path do
-  #     #   execute :rake, 'cache:clear'
-  #     # end
-
-
-  #   end
-  # end
+#   # after :restart, :clear_cache do
+#   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+#   #     # Here we can do anything such as:
+#   #     # within release_path do
+#   #     #   execute :rake, 'cache:clear'
+#   #     # end
 
 
+#   #   end
+#   # end
 
 
 
-end
+
+
+# end
