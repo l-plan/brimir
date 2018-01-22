@@ -48,7 +48,7 @@ ask(:password, nil, echo: false)
 
 # set :passenger_rvm_ruby_version, '2.3.0'
 # set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
-set :passenger_in_gemfile, true
+# set :passenger_in_gemfile, true
 # set :passenger_rvm_ruby_version, '2.4.1'
 
 # set :bundle_path,     nil
