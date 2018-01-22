@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.8.2'
 
-
+set :bundle_flags, '--deployment'
 # default_run_options[:shell] = '/bin/bash --login'
 
 
@@ -17,15 +17,15 @@ set :application, "brimir"
 set :rails_env, "production"
 set :default_stage, "production"
 
-set :default_environment, { 
-  # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
-  # 'RUBY_VERSION' => 'ruby 1.8.7',
-  # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
-  # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
-  # 'PATH' => "/usr/local/bin",
-   "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
-   "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
-}
+# set :default_environment, { 
+#   # 'PATH' => "/path/to/.rvm/ree-1.8.7-2009.10/bin:/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:$PATH",
+#   # 'RUBY_VERSION' => 'ruby 1.8.7',
+#   # 'GEM_HOME' => '/path/to/.rvm/gems/ree/1.8.7',
+#   # 'GEM_PATH' => '/path/to/.rvm/gems/ree/1.8.7' 
+#   # 'PATH' => "/usr/local/bin",
+#    "GEM_PATH"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global",
+#    "GEM_HOME"=>"/Users/rolf/.rvm/gems/ruby-2.4.1:/Users/rolf/.rvm/gems/ruby-2.4.1@global"
+# }
 
 # set :rvm_binary, '~/.rvm/bin/rvm'
 # Default branch is :master
@@ -47,9 +47,9 @@ set :rvm_ruby_version, '2.4.1' #option provided by capistrano-rvm
 ask(:password, nil, echo: false)
 
 # set :passenger_rvm_ruby_version, '2.3.0'
-set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
-set :passenger_in_gemfile, true
-set :passenger_rvm_ruby_version, '2.4.1'
+# set :passenger_environment_variables, { :path => '/usr/local/bin/passenger:$PATH' }
+# set :passenger_in_gemfile, true
+# set :passenger_rvm_ruby_version, '2.4.1'
 
 # set :bundle_path,     nil
 # set :bundle_binstubs, nil
