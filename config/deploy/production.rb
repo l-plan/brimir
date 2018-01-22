@@ -32,7 +32,7 @@
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-set :deploy_to, "/users/rolf/sites/brimir"
+set :deploy_to, "/Users/rolf/sites/brimir"
 set :branch, 'master'
 
 # Custom SSH Options
