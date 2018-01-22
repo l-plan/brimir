@@ -109,7 +109,7 @@ group :development do
   gem 'capistrano-rails'#, require: false
   gem 'capistrano-passenger'#, require: false
 end
-gem 'passenger', '5.1.12'
+# gem 'passenger', '5.1.12'
 
 gem 'gravatar_image_tag', "~> 1.2"
 
